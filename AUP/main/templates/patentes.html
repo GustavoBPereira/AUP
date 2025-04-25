@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="content">
+    <h1>Patentes</h1>
+    <div class="patentes-list">
+        {% for patente in patentes %}
+        <div class="patente-card">
+            <h2>{{ patente.nome }}</h2>
+        </div>
+        {% empty %}
+        <p>Nenhuma patente cadastrada.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="content">
+    <h1>Naves</h1>
+    <div class="naves-list">
+        {% for nave in naves %}
+        <div class="nave-card">
+            <h2>{{ nave.nome }}</h2>
+            <h3>Tripulação:</h3>
+            <ul>
+                {% for tripulante in nave.tripulante.all %}
+                <li>{{ tripulante.nome }} ({{ tripulante.patente.nome }})</li>
+                {% empty %}
+                <li>Nenhum tripulante designado</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% empty %}
+        <p>Nenhuma nave cadastrada.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="content">
+    <h1>Tripulação</h1>
+    <div class="tripulantes-list">
+        {% for tripulante in tripulantes %}
+        <div class="tripulante-card">
+            <h2>{{ tripulante.nome }}</h2>
+            <p><strong>Patente:</strong> {{ tripulante.patente.nome }}</p>
+            <p><strong>Função Principal:</strong> {{ tripulante.get_funcao_principal_display }}</p>
+            <p><strong>Função Secundária:</strong> {{ tripulante.get_funcao_secundaria_display }}</p>
+        </div>
+        {% empty %}
+        <p>Nenhum tripulante cadastrado.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

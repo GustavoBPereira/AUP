@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+        <script src="{% static 'main/js/index.js' %}"></script>
+        {% block static_files %}{% endblock %}
+    </head>
+    <body>
+        {% include "menu.html" %}
+        {% block body %}{% endblock %}
+    </body>
+</html>
+

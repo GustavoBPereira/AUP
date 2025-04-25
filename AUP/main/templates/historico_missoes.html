@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="content">
+    <h1>Histórico de Missões</h1>
+    <div class="missoes-list">
+        {% for missao in missoes %}
+        <div class="missao-card">
+            <h2>{{ missao.nome }}</h2>
+            <p>{{ missao.descricao }}</p>
+        </div>
+        {% empty %}
+        <p>Nenhuma missão registrada.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="content">
+    <h1>Eventos</h1>
+    <div class="eventos-list">
+        {% for evento in eventos %}
+        <div class="evento-card">
+            <h2>{{ evento.missao.nome }}</h2>
+            <p><strong>Data:</strong> {{ evento.data }}</p>
+            <p><strong>Base:</strong> {{ evento.base.nome }}</p>
+            <p><strong>Teve GM:</strong> {% if evento.teve_GM %}Sim{% else %}Não{% endif %}</p>
+        </div>
+        {% empty %}
+        <p>Nenhum evento registrado.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
