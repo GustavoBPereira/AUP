@@ -19,4 +19,10 @@ RUN mkdir -p static staticfiles
 
 RUN python manage.py collectstatic --noinput
 
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "--workers", "3", "AUP.wsgi:application"]
+# Create directory for SSL certificates
+RUN mkdir -p /app/certs
+
+# Copy SSL certificates (they will be mounted at runtime)
+VOLUME ["/app/certs"]
+
+CMD ["gunicorn", "--bind", "0.0.0.0:443", "--workers", "3", "--certfile", "/app/certs/cert.pem", "--keyfile", "/app/certs/key.pem", "AUP.wsgi:application"]
