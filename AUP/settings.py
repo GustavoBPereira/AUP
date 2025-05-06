@@ -16,12 +16,31 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = config('DJANGO_SECRET_KEY')
+SECRET_KEY = config('DJANGO_SECRET_KEY', default='django-insecure-default-key-for-development')
 
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
+# Add logging configuration
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'django': {
+        'handlers': ['console'],
+        'level': 'INFO',
+        'propagate': True,
+    },
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -112,8 +131,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

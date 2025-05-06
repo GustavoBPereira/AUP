@@ -79,7 +79,6 @@ resource "aws_key_pair" "aup_key" {
   key_name   = "aup-key"
   public_key = file("~/.ssh/id_rsa.pub")  # This assumes you have an existing SSH key pair
 }
-
 # EC2 Instance for connecting to RDS
 resource "aws_instance" "aup_app_server" {
   ami                    = "ami-084568db4383264d4" 
@@ -98,6 +97,7 @@ resource "aws_instance" "aup_app_server" {
               echo "export DB_PORT=${aws_db_instance.aup_postgres.port}" >> /etc/environment
               echo "export DB_NAME=${aws_db_instance.aup_postgres.db_name}" >> /etc/environment
               echo "export DB_USER=${aws_db_instance.aup_postgres.username}" >> /etc/environment
+              echo "export DB_PASSWORD=${random_password.db_password.result}" >> /etc/environment
               EOF
 }
 
@@ -126,6 +126,14 @@ resource "aws_security_group" "app_sg" {
   ingress {
     from_port   = 443
     to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Application port
+  ingress {
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

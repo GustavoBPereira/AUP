@@ -11,7 +11,6 @@ services:
     environment:
       - DJANGO_DEBUG=True
       - DJANGO_SECRET_KEY=development_secret_key
-      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0
       - DB_NAME=aup_db
       - DB_USER=postgres
       - DB_PASSWORD=postgres

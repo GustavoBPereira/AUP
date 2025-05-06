@@ -15,6 +15,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+RUN mkdir -p static staticfiles
+
 RUN python manage.py collectstatic --noinput
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "AUP.wsgi:application"] 
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "--workers", "3", "AUP.wsgi:application"]
