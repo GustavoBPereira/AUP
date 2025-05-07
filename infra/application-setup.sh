@@ -1,10 +1,4 @@
-rm -rf ~/AUP
-
-cd ~
-
-git clone https://github.com/GustavoBPereira/AUP.git
-
-cd AUP
+cd ~/AUP
 
 if [ "$(docker ps -a -q -f name=web)" ]; then
   echo "Removing existing web container..."
@@ -33,6 +27,5 @@ docker run -d \
   -e DB_PASSWORD=$DB_PASSWORD \
   -e DB_HOST=$DB_HOST \
   -e DB_PORT=$DB_PORT \
-  -v /etc/letsencrypt/live/domain.com:/app/certs:ro \
   -p 443:443 \
   web
