@@ -19,7 +19,7 @@ resource "random_password" "db_password" {
 
 # Store the password in AWS Secrets Manager
 resource "aws_secretsmanager_secret" "db_password" {
-  name = "aup-database-password"
+  name = "aup-database-passwd"
   description = "Database password for AUP PostgreSQL instance"
 }
 

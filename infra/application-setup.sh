@@ -41,6 +41,6 @@ docker run -d \
   -e DB_PASSWORD=$DB_PASSWORD \
   -e DB_HOST=$DB_HOST \
   -e DB_PORT=$DB_PORT \
-  -v $(pwd)/certs:/app/certs \
+  -v /etc/letsencrypt/live/domain.com:/app/certs:ro \
   -p 443:443 \
   web

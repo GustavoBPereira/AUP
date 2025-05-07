@@ -12,7 +12,8 @@ sudo apt install -y \
     curl \
     ca-certificates \
     gnupg \
-    lsb-release
+    lsb-release \
+    certbot
 
 echo "Installing Git..."
 sudo apt install -y git
@@ -36,3 +37,7 @@ sudo gpasswd -a $USER docker
 newgrp docker
 
 echo "Installation complete!"
+
+
+#  sudo certbot certonly --standalone -d my-domain.com
+# 0 0 1 * * certbot renew --quiet && docker restart web
