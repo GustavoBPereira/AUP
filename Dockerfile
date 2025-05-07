@@ -26,4 +26,4 @@ VOLUME ["/app/certs"]
 
 EXPOSE 443
 
-CMD ["gunicorn", "--bind", "0.0.0.0:443", "--workers", "3", "--certfile", "/app/certs/fullchain.pem", "--keyfile", "/app/certs/privkey.pem", "AUP.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:443", "--workers", "3", "AUP.wsgi:application"]

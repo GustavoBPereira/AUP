@@ -161,3 +161,13 @@ resource "aws_security_group_rule" "allow_ec2_to_rds" {
   security_group_id        = aws_security_group.rds_sg.id
   description              = "Allow EC2 instance to connect to RDS"
 }
+
+# Create Elastic IP
+resource "aws_eip" "aup_eip" {
+  instance = aws_instance.aup_app_server.id
+  domain   = "vpc"
+  
+  tags = {
+    Name = "AUP Elastic IP"
+  }
+}
