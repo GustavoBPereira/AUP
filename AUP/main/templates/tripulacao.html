@@ -94,8 +94,8 @@
                 <tr>
                     <td>{{ tripulante.nome }}</td>
                     <td><span class="badge-rank">{{ tripulante.patente.nome }}</span></td>
-                    <td><span class="badge-function">{{ tripulante.get_funcao_principal_display }}</span></td>
-                    <td><span class="badge-function">{{ tripulante.get_funcao_secundaria_display }}</span></td>
+                    <td><span class="badge-function">{{ tripulante.funcao_principal.nome }}</span></td>
+                    <td><span class="badge-function">{{ tripulante.funcao_secundaria.nome }}</span></td>
                 </tr>
                 {% endfor %}
             </tbody>
