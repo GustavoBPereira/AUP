@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Patente, Tripulante, Nave, Missao, Base, Historico, FuncaoExercida
+from .models import Patente, Tripulante, Nave, Missao, Base, Historico, FuncaoExercida, Funcoes
 
 class PatenteAdmin(admin.ModelAdmin):
     list_display = ('nome',)
@@ -34,6 +34,11 @@ class FuncaoExercidaAdmin(admin.ModelAdmin):
     list_filter = ('funcao', 'pontuacao')
     search_fields = ('tripulante__nome', 'descricao')
 
+class FuncoesAdmin(admin.ModelAdmin):
+    list_display = ('nome',)
+    search_fields = ('nome',)
+
+
 admin.site.register(Patente, PatenteAdmin)
 admin.site.register(Tripulante, TripulanteAdmin)
 admin.site.register(Nave, NaveAdmin)
@@ -41,3 +46,4 @@ admin.site.register(Missao, MissaoAdmin)
 admin.site.register(Base, BaseAdmin)
 admin.site.register(Historico, HistoricoAdmin)
 admin.site.register(FuncaoExercida, FuncaoExercidaAdmin)
+admin.site.register(Funcoes, FuncoesAdmin)

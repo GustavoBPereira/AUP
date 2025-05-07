@@ -39,5 +39,5 @@ newgrp docker
 echo "Installation complete!"
 
 
-#  sudo certbot certonly --standalone -d my-domain.com
+#  sudo certbot certonly --standalone -d aup.rec.br
 # 0 0 1 * * certbot renew --quiet && docker restart web

@@ -6,7 +6,6 @@ __pycache__
 staticfiles
 .idea
 ghostdriver.log
-migrations/
 app_ids.json
 django-db
 static

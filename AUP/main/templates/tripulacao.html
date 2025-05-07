@@ -1,19 +1,111 @@
 {% extends "base.html" %}
 
+{% block static_files %}
+<style>
+    .crew-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        background: #0a1929;
+        margin-top: 20px;
+    }
+    
+    .crew-table thead {
+        background: linear-gradient(90deg, #1a3b5c, #0a1929);
+    }
+    
+    .crew-table th {
+        padding: 15px;
+        color: #00ccff;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 2px solid #00ccff;
+        text-align: left;
+    }
+    
+    .crew-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        text-align: left;
+    }
+    
+    .crew-table tbody tr:hover {
+        background-color: rgba(0, 204, 255, 0.1);
+    }
+    
+    .crew-table .badge-rank {
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+    }
+    
+    .crew-table .badge-function {
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+    }
+    
+    .content h1 {
+        color: #00ccff;
+        text-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
+        margin-bottom: 20px;
+        border-bottom: 2px solid #00ccff;
+        padding-bottom: 10px;
+        text-align: left;
+    }
+    
+    .empty-crew {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 30px;
+        text-align: left;
+        border-radius: 8px;
+        color: #ff9900;
+        font-style: italic;
+    }
+
+    td {
+        font-size: 1.1em;
+    }
+</style>
+{% endblock %}
+
 {% block body %}
 <div class="content">
-    <h1>Tripulação</h1>
-    <div class="tripulantes-list">
-        {% for tripulante in tripulantes %}
-        <div class="tripulante-card">
-            <h2>{{ tripulante.nome }}</h2>
-            <p><strong>Patente:</strong> {{ tripulante.patente.nome }}</p>
-            <p><strong>Função Principal:</strong> {{ tripulante.get_funcao_principal_display }}</p>
-            <p><strong>Função Secundária:</strong> {{ tripulante.get_funcao_secundaria_display }}</p>
-        </div>
-        {% empty %}
-        <p>Nenhum tripulante cadastrado.</p>
-        {% endfor %}
+    <h1>Tripulação da Aliança</h1>
+    
+    {% if tripulantes %}
+    <div>
+        <table class="crew-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Patente</th>
+                    <th>Função Principal</th>
+                    <th>Função Secundária</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tripulante in tripulantes %}
+                <tr>
+                    <td>{{ tripulante.nome }}</td>
+                    <td><span class="badge-rank">{{ tripulante.patente.nome }}</span></td>
+                    <td><span class="badge-function">{{ tripulante.get_funcao_principal_display }}</span></td>
+                    <td><span class="badge-function">{{ tripulante.get_funcao_secundaria_display }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+    {% else %}
+    <div class="empty-crew">
+        <i class="fas fa-user-slash"></i>
+        <p>Nenhum tripulante cadastrado no banco de dados da Frota Estelar.</p>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
