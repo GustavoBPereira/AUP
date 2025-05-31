@@ -5,9 +5,15 @@ if [ "$(docker ps -a -q -f name=web)" ]; then
   docker rm -f web
 fi
 
+# Ensure certificates are readable
+sudo chmod -R 755 /etc/letsencrypt/live
+sudo chmod -R 755 /etc/letsencrypt/archive
+
+# Print certificate information
+echo "Certificate information:"
+sudo ls -la /etc/letsencrypt/live/aup.rec.br/
 
 docker build --no-cache -t web .
-
 
 echo "Environment variables:"
 echo "DJANGO_DEBUG: $DJANGO_DEBUG"
@@ -27,6 +33,8 @@ docker run -d \
   -e DB_PASSWORD=$DB_PASSWORD \
   -e DB_HOST=$DB_HOST \
   -e DB_PORT=$DB_PORT \
-  -v /etc/letsencrypt/live/domain.com:/app/certs:ro \
+  -v /etc/letsencrypt/live:/etc/letsencrypt/live:ro \
+  -v /etc/letsencrypt/archive:/etc/letsencrypt/archive:ro \
+  -p 80:80 \
   -p 443:443 \
   web

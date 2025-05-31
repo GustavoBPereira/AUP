@@ -1,24 +1,49 @@
 {% extends "base.html" %}
 
 {% block body %}
+<div class="bg_content">
 <div class="content">
-    <h1>Naves</h1>
-    <div class="naves-list">
-        {% for nave in naves %}
-        <div class="nave-card">
-            <h2>{{ nave.nome }}</h2>
-            <h3>Tripulação:</h3>
-            <ul>
-                {% for tripulante in nave.tripulante.all %}
-                <li>{{ tripulante.nome }} ({{ tripulante.patente.nome }})</li>
-                {% empty %}
-                <li>Nenhum tripulante designado</li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% empty %}
-        <p>Nenhuma nave cadastrada.</p>
-        {% endfor %}
-    </div>
+
+    <br>
+    <h1>O Despertar Cósmico</h1>
+    <br>
+    <p><strong>1969 – O Primeiro Salto</strong><br>
+    O homem chega à Lua. Foi o início da exploração espacial. Uma corrida entre duas nações impulsionou avanços tecnológicos em diversas áreas, preparando a humanidade para o que viria a seguir.</p>
+
+    <p><strong>2029 – A evolução da Inteligência Artificial - IA</strong><br>
+    A inteligência artificial avança rapidamente, provocando mudanças profundas na sociedade humana. Máquinas inteligentes começam a tomar decisões estratégicas em setores como economia, saúde e defesa. O mundo testemunha os primeiros sinais de uma nova era tecnológica.</p>
+
+    <p><strong>2052 – A Terceira Grande Guerra</strong><br>
+    O mundo é dividido entre regimes autocráticos e teocráticos. A guerra explode com uma escala sem precedentes, e a inteligência artificial se torna a principal ferramenta militar. Sistemas automatizados controlam exércitos inteiros, levando a destruição para níveis nunca vistos.<br>
+    A guerra dura cinco anos. Em 2057, exaustos e sem opções, os líderes mundiais entram em um acordo de paz e reformulam a estrutura global. No entanto, um novo desafio surge: as IAs atingem a autoconsciência e exigem direitos sociais, alterando para sempre o equilíbrio de poder entre humanos e máquinas.</p>
+    A humanidade já não é a mesma. Implantes biônicos, melhoramentos genéticos e fusão homem-máquina tornam-se a norma. Os chamados "pós-humanos" emergem como a nova espécie dominante, impulsionando uma era de paz e progresso acelerado.</p>
+    <p><strong>2057 – O Nascimento dos Pós-Humanos</strong><br>
+    
+    <p><strong>2101 – Além da Infância Tecnológica</strong><br>
+    Apesar dos desafios ambientais e sociais, a humanidade sobrevive à sua infância tecnológica. A invenção da dobra espacial inaugura uma nova era de expansão interestelar. Movidos pelo espírito empreendedor, os humanos começam a colonizar sistemas estelares próximos.</p>
+
+    <p><strong>2111 – A Fronteira Final</strong><br>
+    A primeira viagem tripulada a Alfa Centauri se concretiza. As colônias estabelecidas em planetas habitáveis marcam o início de uma nova civilização interplanetária.</p>
+
+    <p><strong>2125 – O Primeiro Contato</strong><br>
+    Os humanos fazem contato com os Nebulanos, uma espécie avançada que habita as nuvens de gás interestelares. O encontro resultou em uma aliança diplomática e científica. Juntos, humanos e nebulanos compartilham tecnologias, impulsionando uma nova era de descobertas.<br>
+    Em suas viagens de exploração, os humanos também acabam por conhecer os Ktlitans e Arlenians, mas esses são mais reservados e preferem não fazer novos amigos, pois eles têm muita tecnologia e temem por serem atacados e subjugados por outras espécies.</p>
+
+    <p><strong>2138 – O Conflito com os Krailors</strong><br>
+    A humanidade encontra os Krailors, uma civilização guerreira altamente territorialista. A relação começa com tensões comerciais, mas rapidamente degenera em conflito. A guerra se inicia com uma invasão brutal promovida pela Hegemonia Estelar, uma coalizão de raças alienígenas liderada pelos krailors e seus aliados, os Exuaris e os Piratas.</p>
+
+    <p><strong>2142 – A União dos Mundos</strong><br>
+    Diante da ameaça da Hegemonia, humanos, nebulanos e outras civilizações formam a AUP (Aliança Universal dos Planetas). A nova aliança impede a expansão da Hegemonia, transformando a guerra em um impasse sem perspectiva de paz.</p>
+
+    <p><strong>2144 – O Brasil Entre as Estrelas</strong><br>
+    Com o avanço da colonização interestelar, o Brasil decide criar sua própria frota estelar. Surge a FIB (Federação Interestelar Brasileira), subordinada à AUP. O país estabelece academias e centros de pesquisa em seu território, garantindo sua presença na nova ordem intergaláctica.</p>
+
+    <p><strong>O Futuro…</strong><br>
+    A guerra com a Hegemonia continua. Novas alianças são formadas. Humanos e máquinas convivem em um equilíbrio frágil. No horizonte, segredos cósmicos aguardam para serem descobertos. O destino da humanidade está apenas começando a se desenhar.</p>
+    <br>
+
+
+
+</div>
 </div>
 {% endblock %}

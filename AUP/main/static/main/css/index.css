@@ -6,16 +6,26 @@ body {
             background-size: cover;
             color: white;
         }
+
         .header {
+            justify-content: center;
             display: flex;
             align-items: center;
             padding: 20px;
         }
         .logo {
-            font-size: 48px;
-            font-weight: bold;
+            display: flex;
+            width: 10%;
+            height: 10%;
+            margin-right: 50px;
+        }
+
+        .img_logo {
+            width: 100%;
+            height: auto;
         }
         .menu {
+            display: flex;
             margin-top: 10px;
             text-align: center;
         }
@@ -30,7 +40,32 @@ body {
             text-decoration: underline;
         }
         .content {
-            margin: 50px auto;
+            margin: auto;
             max-width: 800px;
-            text-align: center;
+            text-align: left;
+            color: white;
         }
+
+        .bg_content {
+            border-radius: 20px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.6);
+            max-width: 900px;
+        }
+
+        nav {
+            background-color: #1e2a38;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+
+            border: 3px solid white ;
+            border-radius: 10px;
+            
+        }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
