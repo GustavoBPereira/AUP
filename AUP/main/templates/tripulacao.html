@@ -83,7 +83,7 @@
         <table class="crew-table">
             <thead>
                 <tr>
-                    <th>Nome</th>
+                    <th>Nome de Guerra</th>
                     <th>Patente</th>
                     <th>Função Principal</th>
                     <th>Função Secundária</th>
@@ -92,7 +92,7 @@
             <tbody>
                 {% for tripulante in tripulantes %}
                 <tr>
-                    <td>{{ tripulante.nome }}</td>
+                    <td>{{ tripulante.nome_de_guerra }}</td>
                     <td><span class="badge-rank">{{ tripulante.patente.nome }}</span></td>
                     <td><span class="badge-function">{{ tripulante.funcao_principal.nome }}</span></td>
                     <td><span class="badge-function">{{ tripulante.funcao_secundaria.nome }}</span></td>

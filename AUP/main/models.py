@@ -18,11 +18,14 @@ class Funcoes(models.Model):
 
 class Tripulante(models.Model):
     nome = models.CharField(max_length=100)
+    nome_de_guerra = models.CharField(max_length=100)
     patente = models.ForeignKey(Patente, on_delete=models.CASCADE)
     funcao_principal = models.ForeignKey(Funcoes, related_name='funcao_principal', on_delete=models.CASCADE)
-    funcao_secundaria = models.ForeignKey(Funcoes, related_name='funcao_secundaria', on_delete=models.CASCADE)
+    funcao_secundaria = models.ForeignKey(Funcoes, related_name='funcao_secundaria', on_delete=models.CASCADE, blank=True, null=True)
     email = models.EmailField(max_length=254, blank=True, null=True)
     telefone = models.CharField(max_length=20, blank=True, null=True)
+    horas_nave = models.FloatField(blank=True, null=True)
+    pontuacao_atual = models.IntegerField(blank=True, null=True)
     
     def __str__(self):
         return self.nome
@@ -71,3 +74,4 @@ class FuncaoExercida(models.Model):
     
     def __str__(self):
         return f"{self.tripulante.nome} - {self.funcao} - {self.historico.data}"
+
