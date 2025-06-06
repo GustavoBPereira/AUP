@@ -27,6 +27,7 @@ docker run -d \
   -e DB_PASSWORD=$DB_PASSWORD \
   -e DB_HOST=$DB_HOST \
   -e DB_PORT=$DB_PORT \
-  -v /etc/letsencrypt/live/domain.com:/app/certs:ro \
+  -v /etc/letsencrypt/live/aup.rec.br/fullchain.pem:/app/certs/fullchain.pem:ro \
+  -v /etc/letsencrypt/live/aup.rec.br/privkey.pem:/app/certs/privkey.pem:ro \
   -p 443:443 \
   web

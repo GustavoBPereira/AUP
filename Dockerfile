@@ -20,10 +20,12 @@ RUN mkdir -p static staticfiles
 RUN python manage.py collectstatic --noinput
 
 RUN mkdir -p /app/certs && \
-    chmod 755 /app/certs
+    chmod 755 /app/certs && \
+    touch /app/certs/fullchain.pem /app/certs/privkey.pem && \
+    chmod 644 /app/certs/fullchain.pem /app/certs/privkey.pem
 
 VOLUME ["/app/certs"]
 
 EXPOSE 443
 
-CMD ["gunicorn", "--bind", "0.0.0.0:443", "--workers", "3", "AUP.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:443", "--workers", "3", "--certfile", "/app/certs/fullchain.pem", "--keyfile", "/app/certs/privkey.pem", "AUP.wsgi:application"]
